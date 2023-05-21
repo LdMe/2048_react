@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import "./Tile.scss";
-import usePrevious from "../../hooks/usePrevious";
-// tile component for 2048 game
 
 const Tile = ({ value,  movement }) => {
   const [tileValue, setTileValue] = useState(value);

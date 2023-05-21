@@ -1,7 +1,5 @@
 // class board for the game
 import { useEffect, useState,useRef } from "react";
-import Buttons from "../Buttons/Buttons";
-
 import Tile from "../Tile/Tile";
 
 import "./Board.scss";
@@ -49,13 +47,7 @@ const Board = ({action=null}) => {
             move(action.action);
         }
     }, [action]);
-    useEffect(() => {
-        window.addEventListener("keydown", handleKeyDown);
-        return () => {
-            window.removeEventListener("keydown", handleKeyDown);
-        };
-    }, []);
-
+    
     const copyBoard = (board) => {
         const newBoard = [];
         board.forEach(row => {
@@ -68,24 +60,13 @@ const Board = ({action=null}) => {
         return newBoard;
     };
 
-    const handleKeyDown = (event) => {
-       
-        switch (event.key) {
-            case "ArrowLeft":
-                move("left");
-                break;
-            case "ArrowRight":
-                move("right");
-                break;
-            case "ArrowUp":
-                move("up");
-                break;
-            case "ArrowDown":
-                move("down");
-                break;
-            default:
-                break;
-        }
+    const resetBoard = () => {
+        setBoard(createRandomTile(createRandomTile(createEmptyBoard())));
+    };
+
+    const createEmptyBoard = () => {
+        const board =Array(4).fill(0).map(() => Array(4).fill(0));
+        return board;
     };
 
     const move = (direction) => {
@@ -199,7 +180,6 @@ const Board = ({action=null}) => {
         return invertHorizontal(board,movements);
     };
     
-
     const moveLeft = (board,movements) => {
         const newMovements = movements.map((row) => {
             const newRow = row.map((tile) =>  tile);
@@ -289,13 +269,7 @@ const Board = ({action=null}) => {
         );
     };
 
-    const resetBoard = () => {
-        setBoard(createRandomTile(createRandomTile(createEmptyBoard())));
-    };
-    const createEmptyBoard = () => {
-        const board =Array(4).fill(0).map(() => Array(4).fill(0));
-        return board;
-    };
+    
     return (
     <div className="board-container">
         {renderBoard()}

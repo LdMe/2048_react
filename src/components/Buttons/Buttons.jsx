@@ -1,6 +1,33 @@
+import { useEffect } from 'react';
 import './Buttons.scss'
 
 const Buttons =({actions}) => {
+
+    const handleKeyDown = (event) => {
+       
+        switch (event.key) {
+            case "ArrowLeft":
+                actions("left");
+                break;
+            case "ArrowRight":
+                actions("right");
+                break;
+            case "ArrowUp":
+                actions("up");
+                break;
+            case "ArrowDown":
+                actions("down");
+                break;
+            default:
+                break;
+        }
+    };
+    useEffect(() => {
+        window.addEventListener("keydown", handleKeyDown);
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, []);
     return (
         <div className="buttons">
 
