@@ -4,7 +4,7 @@ import Buttons from "../Buttons/Buttons";
 import "./Game.scss";
 
 const Game = () => {
-    const [action, setaction] = useState({action:"",time:Date.now()});
+    const [action, setaction] = useState({action:"reset",time:Date.now()});
     const setAction = (data)=>{
             console.log(data);
             let result = data;

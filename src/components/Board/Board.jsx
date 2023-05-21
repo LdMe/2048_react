@@ -6,10 +6,10 @@ import "./Board.scss";
 
 const Board = ({action=null}) => {
     const [board, setboard] = useState([
-    [64, 0, 2048, 0],
-    [0, 0, 128, 0],
-    [0, 256, 0, 0],
-    [0, 1024, 512, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
     ]);
     const emptyMovements = [
         [[0,0],[0,0],[0,0],[0,0]],
