@@ -1,0 +1,72 @@
+.buttons-row{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 6vh;
+}
+
+.arrow-button {
+    font-size: 40px;
+    background-color: black;
+    color: rgb(95, 95, 95);
+    box-sizing: border-box;
+    &:not(.arrow-button-circle ):active{
+        background-color: rgb(95, 95, 95);
+        color: black;
+    }
+    &.arrow-button-up {
+        border-radius: 5px 5px 0 0;
+    }
+    &.arrow-button-down {
+        border-radius: 0 0 5px 5px;
+    }
+    &.arrow-button-left {
+        border-radius: 5px 0 0  5px;
+    }
+    &.arrow-button-right {
+        border-radius: 0 5px 5px 0;
+    }
+    &.arrow-button-circle {
+        
+        border-radius: 5px;
+        padding: 2px;
+        border-color: black;
+        box-shadow: none;
+    }
+}
+
+.action-buttons {
+    padding-top:40px;
+}
+.action-button {
+    margin :0 10px;
+    font-size: 45px;
+    background-color: black;
+    color: rgb(95, 95, 95);
+    border-radius: 50%;
+    &:active{
+        background-color: rgb(95, 95, 95);
+        color: black;
+    }
+    &.action-button-b {
+        transform: translateY(30%);
+    }
+}
+
+.options-button {
+    font-size: 15px;
+    background-color: black;
+    color: rgb(95, 95, 95);
+    border-radius: 40%;
+    padding: 5px;
+    margin: 0 10px;
+    width: 100px;
+    &:active{
+        background-color: rgb(95, 95, 95);
+        color: black;
+    }
+    &.options-button-circle {
+        border-radius: 5px;
+        padding: 2px;
+    }
+}

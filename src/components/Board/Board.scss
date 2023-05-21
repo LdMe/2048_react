@@ -1,26 +1,14 @@
+.board {
+  background-color: #eee4da;
+  border-radius: 5px;
+
+  border: 1px solid #999;
+  width: 80%;
+  margin:auto;
+}
 .board-row {
   display: flex;
 }
 
-.board {
-  background-color: #eee4da;
-  border-radius: 6px;
+  
 
-  border: 1px solid #999;
-  width: 50%;
-  margin: 100px auto;
-}
-
-.moving {
-  animation: move 0.3s ease forwards;
-}
-@keyframes move {
-  from {
-    transform: translate();
-    z-index: 100;
-  }
-  to {
-    transform: translate(var(--toX), var(--toY));
-    z-index: 1;
-  }
-}

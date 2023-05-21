@@ -1,0 +1,108 @@
+
+#root {
+    background-color: #83a72f;
+    padding-top : 2vh;
+    border-radius: 5px;
+    padding-bottom: 5vh;
+}
+.screen {
+    background-color: #000000;
+    padding: 8% 8% 4% 8%;
+    margin: 2%;
+    border-radius: 15px;
+    position:relative;
+    
+}
+.screen-title {
+    font-size: 30px;
+    color: #ffffff;
+    font-style: italic;
+    & span{
+        &.red {
+            color: #bd063f;
+        }
+        &.green {
+            color: #6db31f;
+        }
+        &.purple {
+            color: #4e4aab;
+        }
+        &.yellow {
+            color: #d6ad05;
+        }
+        &.cyan {
+            color: #009389;
+        }
+    }
+}
+.light {
+    position: absolute;
+    text-align: start;
+    left:0;
+}
+.light i.fa-circle{
+    color: red;
+    position: absolute;
+    top: 80px;
+    left: 10px;
+    animation: blink 1s infinite;
+}
+
+.light i.fa-moon {
+    position: absolute;
+    color: gray;
+    transform: rotate(20deg);
+    transform: scaleX(-100%) rotate(20deg);
+    top: 80px;
+    left: 20px;
+    @each $i in 1,2,3 {
+        &.i-#{$i} {
+            left: 12 +(10 * $i)*1px;
+        }
+    }
+}
+
+.light .power {
+    color: rgb(83, 83, 83);
+    position: absolute;
+    top: 95px;
+    left:10px;
+    font-size:12px;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0.1;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.1;
+    }
+}
+
+
+
+@media screen and (min-width: 700px) {
+    #root  {
+        margin: 0 20%;
+    }
+}
+@media screen and (min-width: 700px) {
+    #root  {
+        margin: 0 20%;
+    }
+}
+@media screen and (min-width: 1024px) {
+    #root  {
+        margin: 0 30%;
+    }
+}
+@media screen and (min-width: 2048px) {
+    #root  {
+        margin: 0 40%;
+    }
+}
+    
+
