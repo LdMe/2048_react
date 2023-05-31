@@ -135,7 +135,7 @@ const moveLeft = (board) => {
 ```
 
 # Invertir casillas
-
+![movimientos](public/ejes.png)
 ```jsx
 // Board.jsx
 
