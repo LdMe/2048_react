@@ -8,8 +8,8 @@ const Board = ({action=null}) => {
 
     // estado board que contiene los valores de las casillas
 const [board, setboard] = useState([
-[2, 2, 2, 2],
-[0, 2, 0, 0],
+[0, 0, 0, 0],
+[0, 0, 0, 0],
 [0, 0, 0, 0],
 [0, 0, 0, 0],
 ]);
@@ -31,6 +31,15 @@ useEffect(() => {
         case "down":
             newBoard = moveDown(board);
             setboard(createRandomTile(newBoard));
+            break;
+        case "reset":
+            newBoard = [
+                [0, 0, 0, 0],
+                [0, 0, 0, 0],
+                [0, 0, 0, 0],
+                [0, 0, 0, 0],
+            ]
+            setboard(createRandomTile(createRandomTile(newBoard)));
             break;
     }
     
