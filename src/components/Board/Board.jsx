@@ -14,22 +14,31 @@ const [board, setboard] = useState([
 [0, 0, 0, 0],
 ]);
 useEffect(() => {
-
+    let newBoard;
     switch (action.action) {
         case "left":
-            setboard(moveLeft(board)); // mover las casillas
+            newBoard = moveLeft(board);
+            setboard(createRandomTile(newBoard));
             break;
         case "right":
-            setboard(moveRight(board)); // invertir las casillas horizontalmente
+            newBoard = moveRight(board);
+            setboard(createRandomTile(newBoard));
             break;
         case "up":
-            setboard(moveUp(board)); // invertir filas y columnas
+            newBoard = moveUp(board);
+            setboard(createRandomTile(newBoard));
             break;
         case "down":
-            setboard(moveDown(board)); // invertir filas y columnas y verticalmente
+            newBoard = moveDown(board);
+            setboard(createRandomTile(newBoard));
             break;
     }
+    
+
+    
 }, [action]);
+
+
 
 const invertHorizontalArray = (array) => {
     return array.map((row) => {
@@ -119,35 +128,62 @@ const moveLeft = (board) => {
         return newRow; // devolver la fila modificada
     });
     return newBoard; // devolver el tablero modificado
-    }; 
-    // función que renderiza el tablero por filas
-    const renderBoard = () => {
-        const rows  = board.map((row, rowIndex) => {
-            let tiles= row.map((tile, colIndex) => 
-                <Tile 
-                    value={tile} 
-                    key={rowIndex.toString() + colIndex.toString()}
-                />
-            );
-            return (
-                <div className="board-row" key={rowIndex}>
-                    {tiles}
-                </div>
-            )
-        });
-        return (
-            <div className="board">
-                {rows}
-            </div>
-        );
-    };
+}; 
 
-    
+
+
+const getEmptyTiles = (board) => {
+    const emptyTiles = [];
+    for (let i = 0; i < board.length; i++) {
+        for (let j = 0; j < board.length; j++) {
+            if (board[i][j] === 0) {
+                emptyTiles.push([i,j]);
+            }
+        }
+    }
+    return emptyTiles;
+};
+
+const createRandomTile = (board) => {
+    const emptyTiles = getEmptyTiles(board);
+    if (emptyTiles.length === 0) {
+        return board;
+    }
+    // seleccionamos una casilla vacía aleatoria
+    const randomTile = emptyTiles[Math.floor(Math.random() * emptyTiles.length)];
+    // asignamos un valor aleatorio a la casilla (2 o 4)
+    board[randomTile[0]][randomTile[1]] = Math.random() < 0.9 ? 2 : 4;
+    return board;
+};
+
+// función que renderiza el tablero por filas
+const renderBoard = () => {
+    const rows  = board.map((row, rowIndex) => {
+        let tiles= row.map((tile, colIndex) => 
+            <Tile 
+                value={tile} 
+                key={rowIndex.toString() + colIndex.toString()}
+            />
+        );
+        return (
+            <div className="board-row" key={rowIndex}>
+                {tiles}
+            </div>
+        )
+    });
     return (
-        <div className="board-container">
-            {renderBoard()}
+        <div className="board">
+            {rows}
         </div>
     );
+};
+
+
+return (
+    <div className="board-container">
+        {renderBoard()}
+    </div>
+);
 }
 
 export default Board;
