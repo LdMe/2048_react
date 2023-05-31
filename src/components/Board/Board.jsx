@@ -15,10 +15,53 @@ const [board, setboard] = useState([
 ]);
 useEffect(() => {
 
-    if (action.action !== "reset") { // si no es el primer movimiento
-        setboard(moveLeft(board)); // mover las casillas
+    switch (action.action) {
+        case "left":
+            setboard(moveLeft(board)); // mover las casillas
+            break;
+        case "right":
+            setboard(invertHorizontalArray(board)); // invertir las casillas horizontalmente
+            break;
+        case "up":
+            setboard(invertRowColsArray(board)); // invertir filas y columnas
+            break;
+        case "down":
+            setboard(invertVerticalArray(board)); // invertir filas y columnas y verticalmente
+            break;
     }
+
 }, [action]);
+
+const invertHorizontalArray = (array) => {
+    return array.map((row) => {
+        return row.reverse().map((tile) => { // invertir las casillas de cada fila
+            return tile;
+        }
+        );
+    });
+};
+
+const invertVerticalArray = (array) => {
+    return array.reverse().map((row) => { // invertir las filas
+        return row.map((tile) => {
+            return tile;
+        });
+    });
+};
+
+const invertRowColsArray = (array) => { // invertir filas y columnas
+    const newArray = [];
+    for (let i = 0; i < array.length; i++) {
+        const newRow = [];
+        for (let j = 0; j < array.length; j++) {
+            let element = array[j][i]; // intercambiar filas y columnas
+            newRow.push(element);
+        }
+        newArray.push(newRow);
+    }
+    return newArray;
+};
+
 const moveLeft = (board) => {
     const newBoard = board.map((row,rowNum) => { // recorrer las filas
         const newRow = row.map((tile) =>  tile); // copiar la fila
