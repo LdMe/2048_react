@@ -17,16 +17,16 @@ useEffect(() => {
 
     switch (action.action) {
         case "left":
-            setboard(rotateLeft(board)); // mover las casillas
+            setboard(moveLeft(board)); // mover las casillas
             break;
         case "right":
-            setboard(rotateRight(board)); // invertir las casillas horizontalmente
+            setboard(moveRight(board)); // invertir las casillas horizontalmente
             break;
         case "up":
-            setboard(invertRowColsArray(board)); // invertir filas y columnas
+            setboard(moveUp(board)); // invertir filas y columnas
             break;
         case "down":
-            setboard(invertVerticalArray(board)); // invertir filas y columnas y verticalmente
+            setboard(moveDown(board)); // invertir filas y columnas y verticalmente
             break;
     }
 }, [action]);
@@ -71,7 +71,23 @@ const rotateRight = (board) => {
     board = invertRowColsArray(board);
     return board;
 };
+const moveUp = (board) => {
+    board = rotateLeft(board);
+    board = moveLeft(board);
+    return rotateRight(board);
+};
 
+const moveDown = (board) => {
+    board = rotateRight(board);
+    board = moveLeft(board);
+    return rotateLeft(board);
+};
+
+const moveRight = (board) => {
+    board = invertHorizontalArray(board);
+    board = moveLeft(board);
+    return invertHorizontalArray(board);
+};
 const moveLeft = (board) => {
     const newBoard = board.map((row,rowNum) => { // recorrer las filas
         const newRow = row.map((tile) =>  tile); // copiar la fila
