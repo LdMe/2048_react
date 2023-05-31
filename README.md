@@ -82,6 +82,8 @@ const Tile = ({ value }) => {
 
 export default Tile;
 ```
+`git checkout inicio`
+
 
 # Añadir movimiento a la izquierda
 
@@ -133,6 +135,8 @@ const moveLeft = (board) => {
     return newBoard; // devolver el tablero modificado
     }; 
 ```
+`git checkout moveleft`
+
 
 # Invertir casillas
 ![movimientos](public/ejes.png)
@@ -189,6 +193,7 @@ const invertRowColsArray = (array) => { // invertir filas y columnas
     return newArray;
 };
 ```
+`git checkout invert`
 
 # Rotar casillas
 
@@ -226,6 +231,7 @@ const rotateRight = (board) => {
     return board;
 };
 ```
+`git checkout rotate`
 
 # Crear una casilla aleatoria
 
@@ -285,7 +291,7 @@ const createRandomTile = (board) => {
 };
 
 ```
-
+`git checkout random_tile`
 
 # Animación casilla más grande
 
@@ -318,3 +324,4 @@ const Tile = ({ value }) => {
 export default Tile;
 
 ```
+`git checkout bigger_animation`
