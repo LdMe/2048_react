@@ -17,10 +17,10 @@ useEffect(() => {
 
     switch (action.action) {
         case "left":
-            setboard(moveLeft(board)); // mover las casillas
+            setboard(rotateLeft(board)); // mover las casillas
             break;
         case "right":
-            setboard(invertHorizontalArray(board)); // invertir las casillas horizontalmente
+            setboard(rotateRight(board)); // invertir las casillas horizontalmente
             break;
         case "up":
             setboard(invertRowColsArray(board)); // invertir filas y columnas
@@ -29,7 +29,6 @@ useEffect(() => {
             setboard(invertVerticalArray(board)); // invertir filas y columnas y verticalmente
             break;
     }
-
 }, [action]);
 
 const invertHorizontalArray = (array) => {
@@ -60,6 +59,17 @@ const invertRowColsArray = (array) => { // invertir filas y columnas
         newArray.push(newRow);
     }
     return newArray;
+};
+const rotateLeft = (board) => {
+    board = invertHorizontalArray(board);
+    board = invertRowColsArray(board);
+    return board;
+};
+
+const rotateRight = (board) => {
+    board = invertVerticalArray(board);
+    board = invertRowColsArray(board);
+    return board;
 };
 
 const moveLeft = (board) => {
