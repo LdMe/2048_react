@@ -9,7 +9,6 @@ const Game = () => {
             console.log(data);
             let result = data;
             if (data === "select" || data === "start") {
-                console.log("afawefase")
                 result = "reset";
             }
             setaction({
